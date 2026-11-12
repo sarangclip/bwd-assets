@@ -11,9 +11,10 @@ Aturan pemilihan per tokoh:
   1. approved/<slug>.<ext> (atau approved/<slug>_*.<ext>) → dipakai, verified=true (sudah disetujui pemilik akun).
   2. Selain itu, kandidat terbaik di candidates/<slug>/ berdasar metadata (judul Commons cocok nama, potret, resolusi,
      bukan foto grup/acara) → verified=true (pemilik akun menyatakan semua foto di folder sudah disetujui, 13 Nov 2026).
-  Tokoh yang sudah ada di tokoh/ dengan verified=true TIDAK diganti oleh kandidat otomatis (hanya oleh approved/).
+  Semua perubahan di folder pemilik akun sudah disetujui: bila kandidat terbaik sebuah tokoh berubah (file baru/diperbarui),
+  foto tokoh itu diganti — termasuk tokoh yang sudah ada. approved/ tetap diprioritaskan di atas candidates/.
   Kolom review_status di downloaded_candidates.csv bernilai APPROVED/REJECTED dihormati.
-Slug yang ditandai "REJECTED:..." di manifest dilewati kecuali ada file di approved/.
+Slug bertanda "REJECTED:..." (mtime = mtime file saat ditolak) dicoba lagi hanya bila ada file yang lebih baru atau ada file di approved/.
 Manifest: tokoh/_sync_manifest.json menyimpan sumber + mtime per slug supaya hanya perubahan yang diproses.
 """
 import csv, json, re, sys, datetime, pathlib
@@ -47,38 +48,53 @@ def files_from_listing(listing):
     d = json.load(open(listing))
     return {e["name"]: e.get("mtimeMs", 0) for e in d.get("entries", []) if e.get("type") == "file"}
 
+def canon_of(slug, man):
+    return next((k for k, v in man.items() if slug in v.get("aliases", [])), slug)
+
+def decide(files, rows, man):
+    """Kembalikan [(slug_kanonik, relpath, row)] yang perlu diproses.
+    Sebuah tokoh diproses bila (a) belum pernah disinkron, atau (b) ada file di folder
+    candidates/<slug>/ atau approved/<slug>* yang lebih baru dari 'seen' di manifest.
+    Untuk (b), file terbaru yang berubah lebih diutamakan (itu yang baru ditambahkan pemilik akun)."""
+    by_slug = {}
+    for rel, mt in files.items():
+        if not rel.lower().endswith(IMG): continue
+        if rel.startswith("approved/"):
+            sl = re.split(r"[_.]", pathlib.Path(rel).stem)[0].lower()
+        elif rel.startswith("candidates/"):
+            sl = rel.split("/")[1]
+        else: continue
+        by_slug.setdefault(canon_of(sl, man), []).append((rel, mt, sl))
+    rowmap = {r["candidate_path"]: r for r in rows}
+    out = []
+    for slug, fl in by_slug.items():
+        m = man.get(slug, {}); seen = m.get("seen", 0)
+        newer = [f for f in fl if f[1] > seen]
+        if m and not newer: continue
+        pool = newer if m else fl
+        appr = [f for f in pool if f[0].startswith("approved/")]
+        if appr:
+            rel = max(appr, key=lambda f: f[1])[0]; out.append((slug, rel, {}, True)); continue
+        scored = []
+        for rel, mt, sl in pool:
+            r = rowmap.get(rel)
+            sc = score(r) if r else 2.5  # file tanpa baris metadata: tetap dipakai (folder sudah disetujui)
+            scored.append((sc, mt, rel, r or {}))
+        scored.sort(key=lambda x: (-x[0], -x[1]))
+        if not scored or scored[0][0] < 2:
+            if m: out.append((slug, None, {}, False))  # hanya perbarui 'seen'
+            continue
+        out.append((slug, scored[0][2], scored[0][3], True))
+    return out, by_slug
+
 def plan(staged, listing):
     files = files_from_listing(listing)
     man = json.loads(MAN.read_text()) if MAN.exists() else {}
-    _, rows, _ = load(staged) if (pathlib.Path(staged) / "metadata").exists() else (None, [], {})
-    stage, slugs = ["metadata/downloaded_candidates.csv", "metadata/master_roster.csv"], set()
-    # approved/
-    for rel, mt in files.items():
-        if rel.startswith("approved/") and rel.lower().endswith(IMG):
-            slug = re.split(r"[_.]", pathlib.Path(rel).stem)[0].lower()
-            m = man.get(slug, {})
-            if m.get("source") != rel or m.get("mtime") != mt:
-                stage.append(rel); slugs.add(slug)
-    # candidates: best per slug, only when slug not verified and best changed
-    best = {}
-    for r in rows:
-        p = r.get("candidate_path", "")
-        if p in files:
-            s = score(r)
-            if s > best.get(r["filename_slug"], (-999, None))[0]:
-                best[r["filename_slug"]] = (s, p)
-    for slug, (s, p) in best.items():
-        if slug in slugs or s < 2: continue
-        meta = T / slug / "meta.json"
-        verified = meta.exists() and json.loads(meta.read_text()).get("verified")
-        canon = next((k for k, v in man.items() if slug in v.get("aliases", [])), slug)
-        if verified or (canon != slug and (T / canon / "meta.json").exists() and json.loads((T / canon / "meta.json").read_text()).get("verified")):
-            continue
-        m = man.get(slug, {})
-        if str(m.get("source", "")).startswith("REJECTED"): continue
-        if m.get("source") != p or m.get("mtime") != files[p]:
-            stage.append(p); slugs.add(slug)
-    print(json.dumps({"stage": stage, "slugs": sorted(slugs)}, ensure_ascii=False))
+    S = pathlib.Path(staged)
+    rows = list(csv.DictReader(open(S / "metadata/downloaded_candidates.csv", encoding="utf-8-sig"))) if (S / "metadata/downloaded_candidates.csv").exists() else []
+    todo, _ = decide(files, rows, man)
+    stage = ["metadata/downloaded_candidates.csv", "metadata/master_roster.csv"] + [t[1] for t in todo if t[1]]
+    print(json.dumps({"stage": stage, "slugs": sorted(t[0] for t in todo if t[1])}, ensure_ascii=False))
 
 def apply(staged, listing):
     from PIL import Image, ImageOps
@@ -90,27 +106,16 @@ def apply(staged, listing):
     man = json.loads(MAN.read_text()) if MAN.exists() else {}
     idx = json.loads((T / "index.json").read_text()) if (T / "index.json").exists() else {}
     sess = new_session("u2net_human_seg"); report = []
+    decided, by_slug = decide(files, rows, man)
     todo = []
-    for p in sorted(S.rglob("*")):
-        rel = str(p.relative_to(S))
-        if not rel.lower().endswith(IMG) or rel not in files: continue
-        if rel.startswith("approved/"):
-            slug = re.split(r"[_.]", p.stem)[0].lower(); todo.append((slug, rel, True, {}))
-    approved_slugs = {t[0] for t in todo}
-    best = {}
-    for r in rows:
-        rel = r.get("candidate_path", "")
-        if (S / rel).exists() and rel in files and r["filename_slug"] not in approved_slugs:
-            s = score(r)
-            if s >= 2 and s > best.get(r["filename_slug"], (-999,))[0]:
-                best[r["filename_slug"]] = (s, rel, r)
-    for slug, (s, rel, r) in best.items():
-        meta = T / slug / "meta.json"
-        if meta.exists() and json.loads(meta.read_text()).get("verified"): continue
-        if str(man.get(slug, {}).get("source", "")).startswith("REJECTED"): continue
-        if man.get(slug, {}).get("source") == rel and man.get(slug, {}).get("mtime") == files[rel]: continue
-        todo.append((slug, rel, True, r))  # pemilik akun: semua foto di folder sudah disetujui (13 Nov 2026)
-    for slug, rel, verified, r in todo:
+    for slug, rel, r, verified in decided:
+        seen = max(f[1] for f in by_slug[slug])
+        if rel is None:
+            man.setdefault(slug, {})["seen"] = seen; continue
+        if not (S / rel).exists():
+            print(json.dumps({"warning": "belum di-stage", "file": rel})); continue
+        todo.append((slug, rel, verified, r, seen))
+    for slug, rel, verified, r, seen in todo:
         ro = roster.get(slug, {})
         d = T / slug; d.mkdir(parents=True, exist_ok=True)
         im = ImageOps.exif_transpose(Image.open(S / rel)).convert("RGB"); im.thumbnail((1600, 1600), Image.LANCZOS)
@@ -124,12 +129,12 @@ def apply(staged, listing):
                 "license_url": r.get("license_url", ""), "source_page": r.get("source_page") or ro.get("source_page_url", ""),
                 "commons_title": r.get("commons_file_title", ""), "role_verified": ro.get("last_role_verified", ""),
                 "verified": verified, "verified_date": datetime.date.today().isoformat() if verified else "",
-                "review": ("Disetujui pemilik akun (folder approved/)" if rel.startswith("approved/") else "Dipilih otomatis dari folder pemilik akun; pemilik akun menyatakan semua foto di folder sudah disetujui"),
+                "review": ("Disetujui pemilik akun (folder approved/)" if rel.startswith("approved/") else "Dari folder pemilik akun; semua isi folder sudah disetujui pemilik akun"),
                 "width": im.width, "added": old.get("added") or datetime.date.today().isoformat(), "updated": datetime.date.today().isoformat(),
                 "source": "Photo Bank v2 milik pemilik akun"}
         (d / "meta.json").write_text(json.dumps(meta, ensure_ascii=False, indent=2))
         idx[slug] = {"name": meta["name"], "role": meta["role"], "aliases": meta["aliases"]}
-        man[slug] = {"source": rel, "mtime": files[rel], "aliases": meta["aliases"]}
+        man[slug] = {"source": rel, "mtime": files[rel], "seen": seen, "aliases": meta["aliases"]}
         report.append({"slug": slug, "name": meta["name"], "verified": verified, "width": im.width, "low_res": im.width < 600, "new": not old})
     (T / "index.json").write_text(json.dumps(dict(sorted(idx.items())), ensure_ascii=False, indent=2))
     MAN.write_text(json.dumps(dict(sorted(man.items())), ensure_ascii=False, indent=2))
