@@ -1,0 +1,527 @@
+{
+  "abdul-muti": {
+    "source": "candidates/abdul-muti/candidate-2.jpg",
+    "mtime": 1794498256094,
+    "aliases": []
+  },
+  "agus-andrianto": {
+    "source": "candidates/agus-andrianto/candidate-1.jpg",
+    "mtime": 1794498105124,
+    "aliases": []
+  },
+  "agus-harimurti": {
+    "source": "candidates/agus-harimurti/candidate-1.png",
+    "mtime": 1794497216182,
+    "aliases": [
+      "ahy"
+    ]
+  },
+  "ahmad-muzani": {
+    "source": "candidates/ahmad-muzani/candidate-3.jpg",
+    "mtime": 1794487571180,
+    "aliases": [
+      "ahmad-muzani-mpr"
+    ]
+  },
+  "ahmad-sahroni": {
+    "source": "candidates/ahmad-sahroni/candidate-2.jpg",
+    "mtime": 1794496455433,
+    "aliases": []
+  },
+  "airlangga-hartarto": {
+    "source": "candidates/airlangga-hartarto/candidate-2.png",
+    "mtime": 1794497939981,
+    "aliases": [
+      "airlangga"
+    ]
+  },
+  "akhmad-wiyagus": {
+    "source": "candidates/akhmad-wiyagus/candidate-4.png",
+    "mtime": 1794503327103,
+    "aliases": []
+  },
+  "almuzzammil-yusuf": {
+    "source": "candidates/almuzzammil-yusuf/candidate-1.jpg",
+    "mtime": 1794493263872,
+    "aliases": []
+  },
+  "amran-sulaiman": {
+    "source": "REJECTED:foto grup",
+    "mtime": 0,
+    "aliases": []
+  },
+  "andre-rosiade": {
+    "source": "candidates/andre-rosiade/candidate-1.jpg",
+    "mtime": 1794493359877,
+    "aliases": []
+  },
+  "anies": {
+    "source": "candidates/anies/candidate-1.jpg",
+    "mtime": 1794487649713,
+    "aliases": []
+  },
+  "anis-matta": {
+    "source": "candidates/anis-matta/candidate-2.jpg",
+    "mtime": 1794503337448,
+    "aliases": []
+  },
+  "arrmanatha": {
+    "source": "candidates/arrmanatha/candidate-1.jpg",
+    "mtime": 1794498013628,
+    "aliases": []
+  },
+  "bahlil-lahadalia": {
+    "source": "candidates/bahlil-lahadalia/candidate-4.png",
+    "mtime": 1794497973448,
+    "aliases": [
+      "bahlil"
+    ]
+  },
+  "bambang-eko": {
+    "source": "candidates/bambang-eko/candidate-4.jpg",
+    "mtime": 1794502388165,
+    "aliases": []
+  },
+  "bambang-pacul": {
+    "source": "candidates/bambang-pacul/candidate-1.jpg",
+    "mtime": 1794494296149,
+    "aliases": []
+  },
+  "basuki-tjahaja-purnama": {
+    "source": "candidates/basuki-tjahaja-purnama/candidate-1.jpg",
+    "mtime": 1794487734348,
+    "aliases": []
+  },
+  "bima-arya": {
+    "source": "candidates/bima-arya/candidate-1.jpg",
+    "mtime": 1794496338433,
+    "aliases": []
+  },
+  "brian-yuliarto": {
+    "source": "candidates/brian-yuliarto/candidate-1.png",
+    "mtime": 1794498269059,
+    "aliases": []
+  },
+  "budi-gunadi": {
+    "source": "candidates/budi-gunadi/candidate-3.png",
+    "mtime": 1794498911818,
+    "aliases": []
+  },
+  "budi-santoso": {
+    "source": "candidates/budi-santoso/candidate-3.jpg",
+    "mtime": 1794498998670,
+    "aliases": []
+  },
+  "budisatrio-djiwandono": {
+    "source": "candidates/budisatrio-djiwandono/candidate-1.jpg",
+    "mtime": 1794487612525,
+    "aliases": []
+  },
+  "dedi-mulyadi": {
+    "source": "candidates/dedi-mulyadi/candidate-3.jpg",
+    "mtime": 1794487723316,
+    "aliases": []
+  },
+  "djamari-chaniago": {
+    "source": "candidates/djamari-chaniago/candidate-1.jpg",
+    "mtime": 1794497161471,
+    "aliases": []
+  },
+  "djarot-saiful-hidayat": {
+    "source": "candidates/djarot-saiful-hidayat/candidate-1.jpg",
+    "mtime": 1794494677963,
+    "aliases": []
+  },
+  "dody-hanggodo": {
+    "source": "candidates/dody-hanggodo/candidate-4.jpg",
+    "mtime": 1794499018407,
+    "aliases": []
+  },
+  "dony-oskaria": {
+    "source": "candidates/dony-oskaria/candidate-2.jpg",
+    "mtime": 1794500552358,
+    "aliases": []
+  },
+  "dudy-purwagandhi": {
+    "source": "candidates/dudy-purwagandhi/candidate-3.jpg",
+    "mtime": 1794499655366,
+    "aliases": []
+  },
+  "eddy-soeparno": {
+    "source": "candidates/eddy-soeparno/candidate-1.jpg",
+    "mtime": 1794496373891,
+    "aliases": []
+  },
+  "edhie-baskoro": {
+    "source": "candidates/edhie-baskoro/candidate-3.jpg",
+    "mtime": 1794486434247,
+    "aliases": []
+  },
+  "erick-thohir": {
+    "source": "candidates/erick-thohir/candidate-3.png",
+    "mtime": 1794501700518,
+    "aliases": []
+  },
+  "fadjroel-rachman": {
+    "source": "candidates/fadjroel-rachman/candidate-2.jpg",
+    "mtime": 1794488984325,
+    "aliases": []
+  },
+  "fadli-zon": {
+    "source": "candidates/fadli-zon/candidate-4.jpg",
+    "mtime": 1794498897123,
+    "aliases": []
+  },
+  "fahri-hamzah": {
+    "source": "candidates/fahri-hamzah/candidate-2.jpg",
+    "mtime": 1794488358832,
+    "aliases": []
+  },
+  "ferry-juliantono-menko": {
+    "source": "candidates/ferry-juliantono-menko/candidate-1.png",
+    "mtime": 1794501635765,
+    "aliases": [
+      "ferry-juliantono"
+    ]
+  },
+  "ganjar": {
+    "source": "candidates/ganjar/candidate-2.jpg",
+    "mtime": 1794487669996,
+    "aliases": []
+  },
+  "gibran": {
+    "source": "candidates/gibran/candidate-1.jpg",
+    "mtime": 1794486419000,
+    "aliases": []
+  },
+  "gkr-hemas": {
+    "source": "candidates/gkr-hemas/candidate-3.jpg",
+    "mtime": 1794497122723,
+    "aliases": []
+  },
+  "habiburokhman": {
+    "source": "candidates/habiburokhman/candidate-4.jpg",
+    "mtime": 1794494270918,
+    "aliases": []
+  },
+  "hanif-faisol": {
+    "source": "candidates/hanif-faisol/candidate-1.jpg",
+    "mtime": 1794502360516,
+    "aliases": []
+  },
+  "hasto-kristiyanto": {
+    "source": "candidates/hasto-kristiyanto/candidate-1.jpg",
+    "mtime": 1794494653360,
+    "aliases": []
+  },
+  "hidayat-nur-wahid": {
+    "source": "candidates/hidayat-nur-wahid/candidate-3.jpg",
+    "mtime": 1794496399374,
+    "aliases": []
+  },
+  "irfan-yusuf": {
+    "source": "candidates/irfan-yusuf/candidate-1.png",
+    "mtime": 1794502313774,
+    "aliases": []
+  },
+  "jokowi": {
+    "source": "candidates/jokowi/candidate-1.jpg",
+    "mtime": 1794486420731,
+    "aliases": []
+  },
+  "juliari-batubara": {
+    "source": "candidates/juliari-batubara/candidate-4.jpg",
+    "mtime": 1794494646293,
+    "aliases": []
+  },
+  "jumhur-hidayat": {
+    "source": "REJECTED:foto grup",
+    "mtime": 0,
+    "aliases": []
+  },
+  "juri-ardiantoro": {
+    "source": "candidates/juri-ardiantoro/candidate-4.jpg",
+    "mtime": 1794502407005,
+    "aliases": []
+  },
+  "kaesang": {
+    "source": "candidates/kaesang/candidate-1.jpg",
+    "mtime": 1794487599147,
+    "aliases": []
+  },
+  "la-nyalla": {
+    "source": "candidates/la-nyalla/candidate-2.jpg",
+    "mtime": 1794497102118,
+    "aliases": []
+  },
+  "lasarus": {
+    "source": "candidates/lasarus/candidate-1.jpg",
+    "mtime": 1794494312935,
+    "aliases": []
+  },
+  "lodewijk-freidrich": {
+    "source": "candidates/lodewijk-freidrich/candidate-3.webp",
+    "mtime": 1794502330921,
+    "aliases": [
+      "lodewijk"
+    ]
+  },
+  "mahfud-md": {
+    "source": "candidates/mahfud-md/candidate-3.jpg",
+    "mtime": 1794487690092,
+    "aliases": []
+  },
+  "maman-abdurrahman": {
+    "source": "candidates/maman-abdurrahman/candidate-4.jpg",
+    "mtime": 1794501652956,
+    "aliases": []
+  },
+  "maruarar": {
+    "source": "candidates/maruarar/candidate-1.png",
+    "mtime": 1794499025182,
+    "aliases": []
+  },
+  "megawati": {
+    "source": "candidates/megawati/candidate-1.jpg",
+    "mtime": 1794486925291,
+    "aliases": []
+  },
+  "meutya-hafid": {
+    "source": "candidates/meutya-hafid/candidate-1.jpg",
+    "mtime": 1794499665403,
+    "aliases": []
+  },
+  "muhammad-muhaimin-iskandar": {
+    "source": "candidates/muhammad-muhaimin-iskandar/candidate-4.jpg",
+    "mtime": 1794497913363,
+    "aliases": [
+      "cak-imin"
+    ]
+  },
+  "mukhtarudin": {
+    "source": "candidates/mukhtarudin/candidate-2.png",
+    "mtime": 1794498958646,
+    "aliases": []
+  },
+  "nasaruddin-umar": {
+    "source": "candidates/nasaruddin-umar/candidate-2.jpg",
+    "mtime": 1794498050831,
+    "aliases": []
+  },
+  "natalius-pigai": {
+    "source": "candidates/natalius-pigai/candidate-4.png",
+    "mtime": 1794498097689,
+    "aliases": []
+  },
+  "nusron-wahid": {
+    "source": "candidates/nusron-wahid/candidate-1.jpg",
+    "mtime": 1794499740442,
+    "aliases": []
+  },
+  "olly-dondokambey": {
+    "source": "candidates/olly-dondokambey/candidate-3.jpg",
+    "mtime": 1794494667954,
+    "aliases": []
+  },
+  "otto-hasibuan": {
+    "source": "candidates/otto-hasibuan/candidate-4.png",
+    "mtime": 1794502353921,
+    "aliases": []
+  },
+  "prabowo": {
+    "source": "candidates/prabowo/candidate-1.jpg",
+    "mtime": 1794486412729,
+    "aliases": []
+  },
+  "prasetyo-hadi": {
+    "source": "candidates/prasetyo-hadi/candidate-3.jpg",
+    "mtime": 1794493304897,
+    "aliases": [
+      "prasetyo"
+    ]
+  },
+  "pratikno": {
+    "source": "candidates/pratikno/candidate-4.jpg",
+    "mtime": 1794497208793,
+    "aliases": []
+  },
+  "puan": {
+    "source": "candidates/puan/candidate-1.jpg",
+    "mtime": 1794486424631,
+    "aliases": []
+  },
+  "rachmat-pambudy": {
+    "source": "candidates/rachmat-pambudy/candidate-3.jpg",
+    "mtime": 1794500517196,
+    "aliases": []
+  },
+  "raharu-saraswati": {
+    "source": "candidates/raharu-saraswati/candidate-1.jpg",
+    "mtime": 1794494288754,
+    "aliases": []
+  },
+  "raja-juli": {
+    "source": "candidates/raja-juli/candidate-1.jpg",
+    "mtime": 1794499700721,
+    "aliases": []
+  },
+  "ribka-haluk": {
+    "source": "candidates/ribka-haluk/candidate-2.png",
+    "mtime": 1794503296375,
+    "aliases": []
+  },
+  "ridwan-kamil": {
+    "source": "candidates/ridwan-kamil/candidate-1.jpg",
+    "mtime": 1794487699703,
+    "aliases": []
+  },
+  "rini-widyantini": {
+    "source": "candidates/rini-widyantini/candidate-4.png",
+    "mtime": 1794500541427,
+    "aliases": []
+  },
+  "robert-rouw": {
+    "source": "candidates/robert-rouw/candidate-1.jpg",
+    "mtime": 1794496470511,
+    "aliases": []
+  },
+  "romahurmuziy": {
+    "source": "candidates/romahurmuziy/candidate-2.jpg",
+    "mtime": 1794493274562,
+    "aliases": []
+  },
+  "rosan-roeslani": {
+    "source": "candidates/rosan-roeslani/candidate-4.png",
+    "mtime": 1794501628962,
+    "aliases": []
+  },
+  "saan-mustopa": {
+    "source": "candidates/saan-mustopa/candidate-2.jpg",
+    "mtime": 1794496445715,
+    "aliases": []
+  },
+  "saifullah-yusuf": {
+    "source": "candidates/saifullah-yusuf/candidate-4.jpg",
+    "mtime": 1794498930777,
+    "aliases": []
+  },
+  "sakti-trenggono": {
+    "source": "candidates/sakti-trenggono/candidate-1.jpg",
+    "mtime": 1794499721782,
+    "aliases": []
+  },
+  "sarmuji-menperin": {
+    "source": "candidates/sarmuji-menperin/candidate-2.jpg",
+    "mtime": 1794498978317,
+    "aliases": [
+      "sarmuji"
+    ]
+  },
+  "sby": {
+    "source": "candidates/sby/candidate-1.jpg",
+    "mtime": 1794487632824,
+    "aliases": []
+  },
+  "siti-hediati-soeharto": {
+    "source": "REJECTED:foto grup",
+    "mtime": 0,
+    "aliases": []
+  },
+  "sjafrie": {
+    "source": "candidates/sjafrie/candidate-4.jpg",
+    "mtime": 1794498039670,
+    "aliases": []
+  },
+  "suahasil": {
+    "source": "candidates/suahasil/candidate-2.jpg",
+    "mtime": 1794498239223,
+    "aliases": []
+  },
+  "sufmi-dasco": {
+    "source": "candidates/sufmi-dasco/candidate-2.jpg",
+    "mtime": 1794486955776,
+    "aliases": []
+  },
+  "sugiono-menko": {
+    "source": "candidates/sugiono-menko/candidate-1.jpg",
+    "mtime": 1794497920295,
+    "aliases": [
+      "sugiono"
+    ]
+  },
+  "sultan-najamudin": {
+    "source": "candidates/sultan-najamudin/candidate-3.jpg",
+    "mtime": 1794496484054,
+    "aliases": []
+  },
+  "supratman": {
+    "source": "candidates/supratman/candidate-4.jpg",
+    "mtime": 1794498079139,
+    "aliases": []
+  },
+  "surya-paloh": {
+    "source": "candidates/surya-paloh/candidate-3.png",
+    "mtime": 1794489658883,
+    "aliases": []
+  },
+  "tamsil-linrung": {
+    "source": "candidates/tamsil-linrung/candidate-2.jpg",
+    "mtime": 1794497150362,
+    "aliases": []
+  },
+  "teddy-indra-wijaya": {
+    "source": "candidates/teddy-indra-wijaya/candidate-1.jpg",
+    "mtime": 1794487581752,
+    "aliases": []
+  },
+  "teuku-riefky": {
+    "source": "candidates/teuku-riefky/candidate-1.jpg",
+    "mtime": 1794501672189,
+    "aliases": []
+  },
+  "tito": {
+    "source": "candidates/tito/candidate-3.jpg",
+    "mtime": 1794498002845,
+    "aliases": []
+  },
+  "widiyanti-putri": {
+    "source": "REJECTED:foto grup",
+    "mtime": 0,
+    "aliases": []
+  },
+  "wihaji": {
+    "source": "candidates/wihaji/candidate-3.jpg",
+    "mtime": 1794501599173,
+    "aliases": []
+  },
+  "yandri-susanto": {
+    "source": "candidates/yandri-susanto/candidate-1.jpg",
+    "mtime": 1794496356036,
+    "aliases": []
+  },
+  "yasonna": {
+    "source": "candidates/yasonna/candidate-3.jpg",
+    "mtime": 1794494620043,
+    "aliases": []
+  },
+  "yassierli": {
+    "source": "candidates/yassierli/candidate-3.png",
+    "mtime": 1794498944962,
+    "aliases": []
+  },
+  "yorrys-raweyai": {
+    "source": "candidates/yorrys-raweyai/candidate-2.jpg",
+    "mtime": 1794497138422,
+    "aliases": []
+  },
+  "yusril": {
+    "source": "candidates/yusril/candidate-4.jpg",
+    "mtime": 1794497190222,
+    "aliases": []
+  },
+  "zulkifli-hasan": {
+    "source": "candidates/zulkifli-hasan/candidate-2.jpg",
+    "mtime": 1794493250834,
+    "aliases": []
+  }
+}
