@@ -1,0 +1,22 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1350px;overflow:hidden;background:#111}
+.wrap{position:relative;width:1080px;height:1350px;font-family:'Inter','Poppins',sans-serif;color:#fff}
+.bg{position:absolute;inset:0;background-size:cover;background-position:var(--pos,center)}
+.shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,12,16,.55) 0%,rgba(10,12,16,0) 18%,rgba(10,12,16,0) 42%,rgba(10,12,16,.85) 66%,rgba(10,12,16,.97) 100%)}
+.brand{position:absolute;top:56px;left:64px;display:flex;align-items:center;gap:14px}
+.hash{width:52px;height:52px;background:#F3EAD7;color:#111;font:800 36px/52px 'Inter';text-align:center;border-radius:8px}
+.word{font:800 26px 'Inter';letter-spacing:.06em}
+.label{position:absolute;top:66px;right:64px;font:600 20px 'Inter';padding:8px 14px;border-radius:6px;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.35)}
+.bottom{position:absolute;left:64px;right:64px;bottom:72px}
+.cat{display:inline-block;background:#D9443A;font:800 24px 'Inter';letter-spacing:.05em;padding:10px 20px;border-radius:6px;margin-bottom:28px;text-transform:uppercase}
+h1{font:800 var(--fs,84px)/1.08 'Inter';letter-spacing:-.02em;text-wrap:balance}
+h1 em{font-style:normal;color:#F5C84B}
+.foot{margin-top:36px;padding-top:22px;border-top:2px solid rgba(255,255,255,.25);display:flex;justify-content:space-between;font:500 22px 'Inter';color:rgba(255,255,255,.75)}
+</style></head><body><div class="wrap">
+<div class="bg" id="bg"></div><div class="shade"></div>
+<div class="brand"><div class="hash">#</div><div class="word">BALAI WARGA DIGITAL</div></div>
+<div class="label" id="label"></div>
+<div class="bottom"><div class="cat" id="cat"></div><h1 id="hl"></h1>
+<div class="foot"><span id="date"></span><span id="src"></span></div></div>
+</div></body></html>
