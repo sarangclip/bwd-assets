@@ -10,7 +10,7 @@ Usage: python3 tools/sync_photobank.py <staged_root> <listing.json> [--plan | --
 Aturan pemilihan per tokoh:
   1. approved/<slug>.<ext> (atau approved/<slug>_*.<ext>) → dipakai, verified=true (sudah disetujui pemilik akun).
   2. Selain itu, kandidat terbaik di candidates/<slug>/ berdasar metadata (judul Commons cocok nama, potret, resolusi,
-     bukan foto grup/acara) → verified=false sampai pemilik akun mengonfirmasi.
+     bukan foto grup/acara) → verified=true (pemilik akun menyatakan semua foto di folder sudah disetujui, 13 Nov 2026).
   Tokoh yang sudah ada di tokoh/ dengan verified=true TIDAK diganti oleh kandidat otomatis (hanya oleh approved/).
   Kolom review_status di downloaded_candidates.csv bernilai APPROVED/REJECTED dihormati.
 Slug yang ditandai "REJECTED:..." di manifest dilewati kecuali ada file di approved/.
@@ -109,7 +109,7 @@ def apply(staged, listing):
         if meta.exists() and json.loads(meta.read_text()).get("verified"): continue
         if str(man.get(slug, {}).get("source", "")).startswith("REJECTED"): continue
         if man.get(slug, {}).get("source") == rel and man.get(slug, {}).get("mtime") == files[rel]: continue
-        todo.append((slug, rel, False, r))
+        todo.append((slug, rel, True, r))  # pemilik akun: semua foto di folder sudah disetujui (13 Nov 2026)
     for slug, rel, verified, r in todo:
         ro = roster.get(slug, {})
         d = T / slug; d.mkdir(parents=True, exist_ok=True)
@@ -124,7 +124,7 @@ def apply(staged, listing):
                 "license_url": r.get("license_url", ""), "source_page": r.get("source_page") or ro.get("source_page_url", ""),
                 "commons_title": r.get("commons_file_title", ""), "role_verified": ro.get("last_role_verified", ""),
                 "verified": verified, "verified_date": datetime.date.today().isoformat() if verified else "",
-                "review": "Disetujui pemilik akun (folder approved/)" if verified else "Dipilih otomatis dari kandidat; menunggu konfirmasi pemilik akun",
+                "review": ("Disetujui pemilik akun (folder approved/)" if rel.startswith("approved/") else "Dipilih otomatis dari folder pemilik akun; pemilik akun menyatakan semua foto di folder sudah disetujui"),
                 "width": im.width, "added": old.get("added") or datetime.date.today().isoformat(), "updated": datetime.date.today().isoformat(),
                 "source": "Photo Bank v2 milik pemilik akun"}
         (d / "meta.json").write_text(json.dumps(meta, ensure_ascii=False, indent=2))
