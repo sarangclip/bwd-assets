@@ -88,6 +88,10 @@ h1 em{{font-style:normal;color:{YEL}}}
 .plate{{position:absolute;z-index:6;background:rgba(7,27,58,.92);border-left:6px solid {RED};padding:10px 16px}}
 .plate b{{display:block;font:800 26px 'Inter'}}
 .plate span{{display:block;font:600 19px 'Inter';color:rgba(247,248,250,.75)}}
+.chips{{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap}}
+.chip{{background:rgba(7,27,58,.9);border-left:5px solid {RED};padding:7px 12px}}
+.chip b{{display:block;font:800 21px 'Inter'}}
+.chip span{{display:block;font:600 15px 'Inter';color:rgba(247,248,250,.72)}}
 .noface{{position:absolute;z-index:6;display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.06);border:2px dashed rgba(255,255,255,.25);border-radius:12px;padding:16px 20px}}
 .noface .ini{{width:64px;height:64px;border-radius:50%;background:{RED};display:grid;place-items:center;font:900 28px 'Inter'}}
 .text{{position:absolute;left:60px;right:60px;z-index:7}}
@@ -137,7 +141,8 @@ def figures_html(figs, box, missing, sizes=None):
     elif n == 2:
         lay = [(0.0, 0.58, 0.96, 3), (0.42, 0.58, 1.0, 4)]
     elif n == 3:
-        lay = [(0.0, 0.44, 0.84, 3), (0.56, 0.44, 0.84, 3), (0.24, 0.52, 1.0, 4)]
+        # tokoh pertama = tokoh utama: tengah, paling besar, paling depan; dua lainnya di belakang kiri/kanan
+        lay = [(0.22, 0.56, 1.0, 5), (0.0, 0.40, 0.74, 3), (0.60, 0.40, 0.74, 3)]
     else:
         lay = []
     for (f, c), (x, w, h, z) in zip(have, lay):
@@ -183,13 +188,17 @@ def build(s, missing):
     if t in ("breaking", "accountability", "figure"):
         nphoto = sum(1 for f in figs[:3] if f.get("slug") and ((ROOT/"tokoh"/f["slug"]/"cutout.png").exists() or any((ROOT/"tokoh"/f["slug"]).glob("photo.*"))))
         area = (440, 120, 640, 760) if t != "figure" else (300, 110, 780, 820)
-        if nphoto >= 2: area = (60, 130, 960, 720)
+        if nphoto == 2: area = (60, 130, 960, 720)
+        if nphoto >= 3: area = (40, 110, 1000, 760)
         fh, plates, nf = figures_html(figs, area, missing)
         parts.append(f'<div class="figs">{fh}</div><div class="shade"></div>')
         if t == "figure": parts.append(plates_html(plates[:1], 640))
-        elif len(plates) >= 2: parts.append(plates_html(plates, 560))
+        elif len(plates) == 2: parts.append(plates_html(plates, 560))
+        chips = ""
+        if len(plates) >= 3:
+            chips = '<div class="chips">' + "".join(f'<div class="chip"><b>{html.escape(f["name"])}</b><span>{html.escape(f.get("role",""))}</span></div>' for f, _, _ in sorted(plates, key=lambda q: q[1]) if f.get("name")) + '</div>'
         parts.append(noface_html(nf, 60, 180))
-        body = head_html(s) + facts_html(s.get("facts"))
+        body = (chips if t != "figure" else "") + head_html(s) + facts_html(s.get("facts"))
         parts.append(f'<div class="text" style="bottom:{textbottom}px">{body}</div>')
     elif t == "budget":
         fh, plates, nf = figures_html(figs[:1], (560, 140, 520, 640), missing)
