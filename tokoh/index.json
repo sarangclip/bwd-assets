@@ -1,1 +1,507 @@
-{}
+{
+  "abdul-muti": {
+    "name": "Abdul Mu'ti",
+    "role": "Mendikdasmen",
+    "aliases": []
+  },
+  "agus-andrianto": {
+    "name": "Agus Andrianto",
+    "role": "Menteri Imigrasi dan Pemasyarakatan",
+    "aliases": []
+  },
+  "agus-harimurti": {
+    "name": "Agus Harimurti Yudhoyono",
+    "role": "Menko Infrastruktur",
+    "aliases": [
+      "ahy"
+    ]
+  },
+  "ahmad-muzani": {
+    "name": "Ahmad Muzani",
+    "role": "Ketua MPR; Gerindra",
+    "aliases": [
+      "ahmad-muzani-mpr"
+    ]
+  },
+  "ahmad-sahroni": {
+    "name": "Ahmad Sahroni",
+    "role": "Tokoh NasDem; DPR",
+    "aliases": []
+  },
+  "airlangga-hartarto": {
+    "name": "Airlangga Hartarto",
+    "role": "Menko Perekonomian",
+    "aliases": [
+      "airlangga"
+    ]
+  },
+  "akhmad-wiyagus": {
+    "name": "Akhmad Wiyagus",
+    "role": "Wamendagri",
+    "aliases": []
+  },
+  "almuzzammil-yusuf": {
+    "name": "Al Muzzammil Yusuf",
+    "role": "Presiden PKS",
+    "aliases": []
+  },
+  "andre-rosiade": {
+    "name": "Andre Rosiade",
+    "role": "Politikus Gerindra; DPR",
+    "aliases": []
+  },
+  "anies": {
+    "name": "Anies Baswedan",
+    "role": "Tokoh politik nasional",
+    "aliases": []
+  },
+  "anis-matta": {
+    "name": "Anis Matta",
+    "role": "Wamenlu",
+    "aliases": []
+  },
+  "arrmanatha": {
+    "name": "Arrmanatha Christiawan Nasir",
+    "role": "Menteri Luar Negeri",
+    "aliases": []
+  },
+  "bahlil-lahadalia": {
+    "name": "Bahlil Lahadalia",
+    "role": "Menko Hilirisasi dan Transisi Energi",
+    "aliases": [
+      "bahlil"
+    ]
+  },
+  "bambang-eko": {
+    "name": "Bambang Eko Suhariyanto",
+    "role": "Wamensesneg",
+    "aliases": []
+  },
+  "bambang-pacul": {
+    "name": "Bambang Wuryanto",
+    "role": "Politikus PDIP; MPR",
+    "aliases": []
+  },
+  "basuki-tjahaja-purnama": {
+    "name": "Basuki Tjahaja Purnama",
+    "role": "Tokoh politik; mantan Gubernur DKI",
+    "aliases": []
+  },
+  "bima-arya": {
+    "name": "Bima Arya Sugiarto",
+    "role": "Tokoh PAN; Wamendagri",
+    "aliases": []
+  },
+  "brian-yuliarto": {
+    "name": "Brian Yuliarto",
+    "role": "Mendiktisaintek",
+    "aliases": []
+  },
+  "budi-gunadi": {
+    "name": "Budi Gunadi Sadikin",
+    "role": "Menteri Kesehatan",
+    "aliases": []
+  },
+  "budi-santoso": {
+    "name": "Budi Santoso",
+    "role": "Menteri Perdagangan",
+    "aliases": []
+  },
+  "budisatrio-djiwandono": {
+    "name": "Budisatrio Djiwandono",
+    "role": "Politikus Gerindra; DPR",
+    "aliases": []
+  },
+  "dedi-mulyadi": {
+    "name": "Dedi Mulyadi",
+    "role": "Gubernur Jawa Barat",
+    "aliases": []
+  },
+  "djamari-chaniago": {
+    "name": "Djamari Chaniago",
+    "role": "Menko Polkam",
+    "aliases": []
+  },
+  "djarot-saiful-hidayat": {
+    "name": "Djarot Saiful Hidayat",
+    "role": "Tokoh PDIP",
+    "aliases": []
+  },
+  "dody-hanggodo": {
+    "name": "Dody Hanggodo",
+    "role": "Menteri Pekerjaan Umum",
+    "aliases": []
+  },
+  "dony-oskaria": {
+    "name": "Dony Oskaria",
+    "role": "Kepala BP BUMN",
+    "aliases": []
+  },
+  "dudy-purwagandhi": {
+    "name": "Dudy Purwagandhi",
+    "role": "Menteri Perhubungan",
+    "aliases": []
+  },
+  "eddy-soeparno": {
+    "name": "Eddy Soeparno",
+    "role": "Tokoh PAN; MPR",
+    "aliases": []
+  },
+  "edhie-baskoro": {
+    "name": "Edhie Baskoro Yudhoyono",
+    "role": "Politikus Demokrat; MPR",
+    "aliases": []
+  },
+  "erick-thohir": {
+    "name": "Erick Thohir",
+    "role": "Menteri Pemuda dan Olahraga",
+    "aliases": []
+  },
+  "fadjroel-rachman": {
+    "name": "Fadjroel Rachman",
+    "role": "Tokoh politik/publik",
+    "aliases": []
+  },
+  "fadli-zon": {
+    "name": "Fadli Zon",
+    "role": "Menteri Kebudayaan",
+    "aliases": []
+  },
+  "fahri-hamzah": {
+    "name": "Fahri Hamzah",
+    "role": "Wakil Menteri; tokoh politik",
+    "aliases": []
+  },
+  "ferry-juliantono-menko": {
+    "name": "Ferry Juliantono",
+    "role": "Menteri Koperasi",
+    "aliases": [
+      "ferry-juliantono"
+    ]
+  },
+  "ganjar": {
+    "name": "Ganjar Pranowo",
+    "role": "Tokoh PDIP",
+    "aliases": []
+  },
+  "gibran": {
+    "name": "Gibran Rakabuming Raka",
+    "role": "Wakil Presiden RI",
+    "aliases": []
+  },
+  "gkr-hemas": {
+    "name": "GKR Hemas",
+    "role": "Pimpinan DPD",
+    "aliases": []
+  },
+  "habiburokhman": {
+    "name": "Habiburokhman",
+    "role": "Politikus Gerindra; DPR",
+    "aliases": []
+  },
+  "hanif-faisol": {
+    "name": "Hanif Faisol Nurofiq",
+    "role": "Wamenko Pangan",
+    "aliases": []
+  },
+  "hasto-kristiyanto": {
+    "name": "Hasto Kristiyanto",
+    "role": "Tokoh PDIP",
+    "aliases": []
+  },
+  "hidayat-nur-wahid": {
+    "name": "Hidayat Nur Wahid",
+    "role": "Tokoh PKS; MPR",
+    "aliases": []
+  },
+  "irfan-yusuf": {
+    "name": "Mochammad Irfan Yusuf",
+    "role": "Menteri Haji dan Umrah",
+    "aliases": []
+  },
+  "jokowi": {
+    "name": "Joko Widodo",
+    "role": "Mantan Presiden RI",
+    "aliases": []
+  },
+  "juliari-batubara": {
+    "name": "Juliari Batubara",
+    "role": "Mantan pejabat; tokoh pemberitaan",
+    "aliases": []
+  },
+  "juri-ardiantoro": {
+    "name": "Juri Ardiantoro",
+    "role": "Wamensesneg",
+    "aliases": []
+  },
+  "kaesang": {
+    "name": "Kaesang Pangarep",
+    "role": "Ketua Umum PSI",
+    "aliases": []
+  },
+  "la-nyalla": {
+    "name": "La Nyalla Mattalitti",
+    "role": "Anggota DPD; mantan Ketua DPD",
+    "aliases": []
+  },
+  "lasarus": {
+    "name": "Lasarus",
+    "role": "Politikus PDIP; DPR",
+    "aliases": []
+  },
+  "lodewijk-freidrich": {
+    "name": "Lodewijk Freidrich Paulus",
+    "role": "Wamenko Polkam",
+    "aliases": [
+      "lodewijk"
+    ]
+  },
+  "mahfud-md": {
+    "name": "Mahfud MD",
+    "role": "Tokoh hukum dan politik",
+    "aliases": []
+  },
+  "maman-abdurrahman": {
+    "name": "Maman Abdurrahman",
+    "role": "Menteri UMKM",
+    "aliases": []
+  },
+  "maruarar": {
+    "name": "Maruarar Sirait",
+    "role": "Menteri Perumahan",
+    "aliases": []
+  },
+  "megawati": {
+    "name": "Megawati Soekarnoputri",
+    "role": "Ketua Umum PDIP",
+    "aliases": []
+  },
+  "meutya-hafid": {
+    "name": "Meutya Viada Hafid",
+    "role": "Menteri Komunikasi dan Digital",
+    "aliases": []
+  },
+  "muhammad-muhaimin-iskandar": {
+    "name": "Abdul Muhaimin Iskandar",
+    "role": "Menko Pemberdayaan Masyarakat",
+    "aliases": [
+      "cak-imin"
+    ]
+  },
+  "mukhtarudin": {
+    "name": "Mukhtarudin",
+    "role": "Menteri P2MI",
+    "aliases": []
+  },
+  "nasaruddin-umar": {
+    "name": "Nasaruddin Umar",
+    "role": "Menteri Agama",
+    "aliases": []
+  },
+  "natalius-pigai": {
+    "name": "Natalius Pigai",
+    "role": "Menteri HAM",
+    "aliases": []
+  },
+  "nusron-wahid": {
+    "name": "Nusron Wahid",
+    "role": "Menteri ATR/Kepala BPN",
+    "aliases": []
+  },
+  "olly-dondokambey": {
+    "name": "Olly Dondokambey",
+    "role": "Tokoh PDIP",
+    "aliases": []
+  },
+  "otto-hasibuan": {
+    "name": "Otto Hasibuan",
+    "role": "Wamenko Kumham Imipas",
+    "aliases": []
+  },
+  "prabowo": {
+    "name": "Prabowo Subianto",
+    "role": "Presiden RI",
+    "aliases": []
+  },
+  "prasetyo-hadi": {
+    "name": "Prasetyo Hadi",
+    "role": "Tokoh Gerindra; Mensesneg",
+    "aliases": [
+      "prasetyo"
+    ]
+  },
+  "pratikno": {
+    "name": "Pratikno",
+    "role": "Menko PMK",
+    "aliases": []
+  },
+  "puan": {
+    "name": "Puan Maharani",
+    "role": "Ketua DPR RI",
+    "aliases": []
+  },
+  "rachmat-pambudy": {
+    "name": "Rachmat Pambudy",
+    "role": "Menteri PPN/Kepala Bappenas",
+    "aliases": []
+  },
+  "raharu-saraswati": {
+    "name": "Rahayu Saraswati Djojohadikusumo",
+    "role": "Politikus Gerindra; DPR",
+    "aliases": []
+  },
+  "raja-juli": {
+    "name": "Raja Juli Antoni",
+    "role": "Menteri Kehutanan",
+    "aliases": []
+  },
+  "ribka-haluk": {
+    "name": "Ribka Haluk",
+    "role": "Wamendagri",
+    "aliases": []
+  },
+  "ridwan-kamil": {
+    "name": "Ridwan Kamil",
+    "role": "Tokoh politik; mantan Gubernur Jabar",
+    "aliases": []
+  },
+  "rini-widyantini": {
+    "name": "Rini Widyantini",
+    "role": "Menteri PANRB",
+    "aliases": []
+  },
+  "robert-rouw": {
+    "name": "Roberth Rouw",
+    "role": "Tokoh NasDem; DPR",
+    "aliases": []
+  },
+  "romahurmuziy": {
+    "name": "Muhammad Romahurmuziy",
+    "role": "Tokoh PPP",
+    "aliases": []
+  },
+  "rosan-roeslani": {
+    "name": "Rosan Perkasa Roeslani",
+    "role": "Menteri Investasi dan Hilirisasi",
+    "aliases": []
+  },
+  "saan-mustopa": {
+    "name": "Saan Mustopa",
+    "role": "Tokoh NasDem; DPR",
+    "aliases": []
+  },
+  "saifullah-yusuf": {
+    "name": "Saifullah Yusuf",
+    "role": "Menteri Sosial",
+    "aliases": []
+  },
+  "sakti-trenggono": {
+    "name": "Sakti Wahyu Trenggono",
+    "role": "Menteri Kelautan dan Perikanan",
+    "aliases": []
+  },
+  "sarmuji-menperin": {
+    "name": "Muhammad Sarmuji",
+    "role": "Menteri Perindustrian",
+    "aliases": [
+      "sarmuji"
+    ]
+  },
+  "sby": {
+    "name": "Susilo Bambang Yudhoyono",
+    "role": "Mantan Presiden; Demokrat",
+    "aliases": []
+  },
+  "sjafrie": {
+    "name": "Sjafrie Sjamsoeddin",
+    "role": "Menteri Pertahanan",
+    "aliases": []
+  },
+  "suahasil": {
+    "name": "Suahasil Nazara",
+    "role": "Menteri Keuangan (perubahan 2026; verifikasi)",
+    "aliases": []
+  },
+  "sufmi-dasco": {
+    "name": "Sufmi Dasco Ahmad",
+    "role": "Pimpinan DPR; Gerindra",
+    "aliases": []
+  },
+  "sugiono-menko": {
+    "name": "Sugiono",
+    "role": "Menko PMK (perubahan 2026; verifikasi)",
+    "aliases": [
+      "sugiono"
+    ]
+  },
+  "sultan-najamudin": {
+    "name": "Sultan Bachtiar Najamudin",
+    "role": "Ketua DPD RI",
+    "aliases": []
+  },
+  "supratman": {
+    "name": "Supratman Andi Agtas",
+    "role": "Menteri Hukum",
+    "aliases": []
+  },
+  "surya-paloh": {
+    "name": "Surya Paloh",
+    "role": "Ketua Umum NasDem",
+    "aliases": []
+  },
+  "tamsil-linrung": {
+    "name": "Tamsil Linrung",
+    "role": "Pimpinan DPD",
+    "aliases": []
+  },
+  "teddy-indra-wijaya": {
+    "name": "Teddy Indra Wijaya",
+    "role": "Sekretaris Kabinet",
+    "aliases": []
+  },
+  "teuku-riefky": {
+    "name": "Teuku Riefky Harsya",
+    "role": "Menteri Ekonomi Kreatif",
+    "aliases": []
+  },
+  "tito": {
+    "name": "Muhammad Tito Karnavian",
+    "role": "Menteri Dalam Negeri",
+    "aliases": []
+  },
+  "wihaji": {
+    "name": "Wihaji",
+    "role": "Menteri Kependudukan dan Pembangunan Keluarga",
+    "aliases": []
+  },
+  "yandri-susanto": {
+    "name": "Yandri Susanto",
+    "role": "Tokoh PAN; Menteri",
+    "aliases": []
+  },
+  "yasonna": {
+    "name": "Yasonna Laoly",
+    "role": "Politikus PDIP",
+    "aliases": []
+  },
+  "yassierli": {
+    "name": "Yassierli",
+    "role": "Menteri Ketenagakerjaan",
+    "aliases": []
+  },
+  "yorrys-raweyai": {
+    "name": "Yorrys Raweyai",
+    "role": "Pimpinan DPD",
+    "aliases": []
+  },
+  "yusril": {
+    "name": "Yusril Ihza Mahendra",
+    "role": "Menko Kumham Imipas",
+    "aliases": []
+  },
+  "zulkifli-hasan": {
+    "name": "Zulkifli Hasan",
+    "role": "Ketua Umum PAN",
+    "aliases": []
+  }
+}
