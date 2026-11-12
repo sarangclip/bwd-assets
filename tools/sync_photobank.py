@@ -62,7 +62,7 @@ def decide(files, rows, man):
         if rel.startswith("approved/"):
             sl = re.split(r"[_.]", pathlib.Path(rel).stem)[0].lower()
         elif rel.startswith("candidates/"):
-            sl = rel.split("/")[1]
+            sl = rel.split("/")[-2]  # folder yang langsung berisi file (juga menangani folder tokoh yang terselip di folder lain)
         else: continue
         by_slug.setdefault(canon_of(sl, man), []).append((rel, mt, sl))
     rowmap = {r["candidate_path"]: r for r in rows}
