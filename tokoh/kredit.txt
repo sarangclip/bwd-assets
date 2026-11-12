@@ -1,0 +1,3 @@
+# Kredit foto (opsional). Format:  nama-file-tanpa-ekstensi: sumber foto
+# contoh:
+# gibran-rakabuming: BPMI Setpres

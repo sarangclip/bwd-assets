@@ -1,0 +1,3 @@
+# Nama & jabatan tampil (opsional). Format:  nama-file: Nama Lengkap | Jabatan
+# contoh:
+# gibran-rakabuming: Gibran Rakabuming Raka | Wakil Presiden RI
