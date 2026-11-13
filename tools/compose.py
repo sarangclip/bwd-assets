@@ -8,7 +8,9 @@ Spec (JSON):
   badge      opsional, label status merah-kuning (mis. "Belum Terverifikasi")
   headline   judul; *kata* = sorot kuning
   deck       opsional, 1 kalimat pendukung (maks ~18 kata)
-  figures    [{slug, name, role}] maks 3 — foto dari tokoh/<slug>/ di repo
+  figures    [{slug, name, role}] maks 3 — HANYA tokoh yang namanya disebut di headline; foto dari tokoh/<slug>/
+  graphic    opsional {type, label} — grafis editorial simbolik yang menjelaskan headline
+             (type: kursi-kosong, penyadapan, gedung, uang, palu, dokumen, perisai, jaringan)
   facts      [{icon, label, value}] maks 3 (icon: status police gov money calendar doc chart gavel people mic globe)
   bignum     {value, label}            (budget)
   points     ["...", "...", "..."]       (explainer, maks 3)
@@ -21,6 +23,8 @@ Tokoh tanpa foto → hanya papan nama (tanpa wajah buatan). Daftar yang hilang d
 """
 import json, sys, re, html, pathlib
 from playwright.sync_api import sync_playwright
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import graphics
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 NAVY, RED, YEL, WHITE = "#071B3A", "#E51E2A", "#FFD43B", "#F7F8FA"
@@ -92,6 +96,9 @@ h1 em{{font-style:normal;color:{YEL}}}
 .chip{{background:rgba(7,27,58,.9);border-left:5px solid {RED};padding:7px 12px}}
 .chip b{{display:block;font:800 21px 'Inter'}}
 .chip span{{display:block;font:600 15px 'Inter';color:rgba(247,248,250,.72)}}
+.gfx{{position:absolute;z-index:2}}
+.gfx svg{{display:block;filter:drop-shadow(0 18px 30px rgba(0,0,0,.5))}}
+.glabel{{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);white-space:nowrap;background:{YEL};color:{NAVY};font:900 22px 'Inter';letter-spacing:.06em;text-transform:uppercase;padding:8px 16px;border-radius:6px;z-index:6}}
 .noface{{position:absolute;z-index:6;display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.06);border:2px dashed rgba(255,255,255,.25);border-radius:12px;padding:16px 20px}}
 .noface .ini{{width:64px;height:64px;border-radius:50%;background:{RED};display:grid;place-items:center;font:900 28px 'Inter'}}
 .text{{position:absolute;left:60px;right:60px;z-index:7}}
@@ -187,12 +194,19 @@ def build(s, missing):
     textbottom = 120  # space for footer
     if t in ("breaking", "accountability", "figure"):
         nphoto = sum(1 for f in figs[:3] if f.get("slug") and ((ROOT/"tokoh"/f["slug"]/"cutout.png").exists() or any((ROOT/"tokoh"/f["slug"]).glob("photo.*"))))
+        g = s.get("graphic") or {}
         area = (440, 120, 640, 760) if t != "figure" else (300, 110, 780, 820)
+        if g.get("type") and nphoto == 1: area = (470, 110, 610, 790)
         if nphoto == 2: area = (60, 130, 960, 720)
         if nphoto >= 3: area = (40, 110, 1000, 760)
         fh, plates, nf = figures_html(figs, area, missing)
+        if g.get("type") and nphoto <= 1:
+            gx, gy, gs = (30, 150, 470) if nphoto == 1 else (300, 130, 480)
+            lab = f'<div class="glabel">{html.escape(g.get("label",""))}</div>' if g.get("label") else ""
+            parts.append(f'<div class="gfx" style="left:{gx}px;top:{gy}px;width:{gs}px">{graphics.svg(g["type"], gs)}{lab}</div>')
         parts.append(f'<div class="figs">{fh}</div><div class="shade"></div>')
         if t == "figure": parts.append(plates_html(plates[:1], 640))
+        elif len(plates) == 1: parts.append(plates_html(plates, 580))
         elif len(plates) == 2: parts.append(plates_html(plates, 560))
         chips = ""
         if len(plates) >= 3:
