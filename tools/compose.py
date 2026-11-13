@@ -139,7 +139,7 @@ def figures_html(figs, box, missing, sizes=None):
     if n == 1:
         lay = [(0.0, 1.0, 1.0, 3)]
     elif n == 2:
-        lay = [(0.0, 0.58, 0.96, 3), (0.42, 0.58, 1.0, 4)]
+        lay = [(0.0, 0.58, 1.0, 4), (0.42, 0.58, 0.9, 3)]  # tokoh pertama (utama) di depan & lebih besar
     elif n == 3:
         # tokoh pertama = tokoh utama: tengah, paling besar, paling depan; dua lainnya di belakang kiri/kanan
         lay = [(0.22, 0.56, 1.0, 5), (0.0, 0.40, 0.74, 3), (0.60, 0.40, 0.74, 3)]
