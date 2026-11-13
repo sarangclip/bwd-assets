@@ -221,7 +221,14 @@ def build(s, missing):
         fh, plates, nf = figures_html(figs[:1], (560, 140, 520, 640), missing)
         bn = s.get("bignum")
         big = f'<div class="big"><b>{html.escape(bn["value"])}</b><span>{html.escape(bn["label"])}</span></div>' if bn else ""
-        parts.append(f'<div class="figs">{fh}</div><div class="shade"></div>')
+        g = s.get("graphic") or {}
+        if g.get("type"):
+            gx, gy, gs = (30, 150, 470) if fh else (300, 130, 480)
+            lab = f'<div class="glabel">{html.escape(g.get("label",""))}</div>' if g.get("label") else ""
+            gfx = f'<div class="gfx" style="left:{gx}px;top:{gy}px;width:{gs}px;z-index:4">{graphics.svg(g["type"], gs)}{lab}</div>'
+        else:
+            gfx = ""
+        parts.append(f'<div class="figs">{fh}</div><div class="shade"></div>{gfx}')
         parts.append(noface_html(nf, 60, 180))
         parts.append(f'<div class="text" style="bottom:{textbottom}px">{head_html(s)}{big}{facts_html(s.get("facts"))}</div>')
     elif t == "explainer":
