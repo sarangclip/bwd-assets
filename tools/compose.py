@@ -9,6 +9,7 @@ Spec (JSON):
   headline   judul; *kata* = sorot kuning
   deck       opsional, 1 kalimat pendukung (maks ~18 kata)
   figures    [{slug, name, role}] maks 3 — HANYA tokoh yang namanya disebut di headline; foto dari tokoh/<slug>/
+  show_names opsional true → tampilkan label nama/jabatan di foto tokoh (default: tidak; papan nama tokoh TANPA foto tetap tampil)
   graphic    opsional {type, label} — grafis editorial simbolik yang menjelaskan headline
              (type: kursi-kosong, penyadapan, gedung, uang, palu, dokumen, perisai, jaringan)
   facts      [{icon, label, value}] maks 3 (icon: status police gov money calendar doc chart gavel people mic globe)
@@ -205,11 +206,13 @@ def build(s, missing):
             lab = f'<div class="glabel">{html.escape(g.get("label",""))}</div>' if g.get("label") else ""
             parts.append(f'<div class="gfx" style="left:{gx}px;top:{gy}px;width:{gs}px">{graphics.svg(g["type"], gs)}{lab}</div>')
         parts.append(f'<div class="figs">{fh}</div><div class="shade"></div>')
-        if t == "figure": parts.append(plates_html(plates[:1], 640))
-        elif len(plates) == 1: parts.append(plates_html(plates, 580))
-        elif len(plates) == 2: parts.append(plates_html(plates, 560))
+        # Default: TANPA label nama untuk tokoh berfoto (nama sudah ada di headline). Aktifkan dengan "show_names": true.
+        show = s.get("show_names", False)
+        if show and t == "figure": parts.append(plates_html(plates[:1], 640))
+        elif show and len(plates) == 1: parts.append(plates_html(plates, 580))
+        elif show and len(plates) == 2: parts.append(plates_html(plates, 560))
         chips = ""
-        if len(plates) >= 3:
+        if show and len(plates) >= 3:
             chips = '<div class="chips">' + "".join(f'<div class="chip"><b>{html.escape(f["name"])}</b><span>{html.escape(f.get("role",""))}</span></div>' for f, _, _ in sorted(plates, key=lambda q: q[1]) if f.get("name")) + '</div>'
         parts.append(noface_html(nf, 60, 180))
         body = (chips if t != "figure" else "") + head_html(s) + facts_html(s.get("facts"))
