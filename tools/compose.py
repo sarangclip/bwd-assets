@@ -254,8 +254,17 @@ def main():
         pg.evaluate("""()=>{const h=document.getElementById('hl');if(!h)return;let fs=92;
           const ok=()=>{const r=h.getBoundingClientRect();const blocks=[...document.querySelectorAll('.text')];
             const top=Math.min(...blocks.map(x=>x.getBoundingClientRect().top));
-            const bot=Math.max(...blocks.map(x=>x.getBoundingClientRect().bottom));return r.height<=fs*1.02*4.1 && top>=130 && bot<=1236 && h.scrollWidth<=h.clientWidth};
-          while(!ok()&&fs>54){fs-=2;h.style.setProperty('--fs',fs+'px')}}""")
+            const bot=Math.max(...blocks.map(x=>x.getBoundingClientRect().bottom));
+            const minTop=document.querySelector('.plate,.glabel')?600:130;
+            return r.height<=fs*1.02*4.1 && top>=minTop && bot<=1236 && h.scrollWidth<=h.clientWidth};
+          while(!ok()&&fs>54){fs-=2;h.style.setProperty('--fs',fs+'px')}
+          // baris papan nama + label grafis selalu tepat di atas blok teks (tidak menimpa kategori/badge/headline)
+          const t=document.querySelector('.text');if(!t)return;const row=t.getBoundingClientRect().top-16;
+          document.querySelectorAll('.plate').forEach(pl=>{pl.style.top=(row-pl.offsetHeight)+'px'});
+          const g=document.querySelector('.gfx');if(g){const lab=g.querySelector('.glabel');const gs=g.offsetWidth;
+            let top=lab?row-gs+18:row-gs;const minT=120;
+            if(top<minT){const sc=(gs-(minT-top))/gs;const sv=g.querySelector('svg');sv.style.transformOrigin='bottom center';sv.style.transform='scale('+sc+')';}
+            g.style.top=top+'px'}}""")
         pg.wait_for_timeout(250); pg.screenshot(path=out); b.close()
     tmp.unlink()
     print(json.dumps({"out": out, "missing_photos": missing}))
