@@ -95,8 +95,26 @@ def jaringan():
     n = "".join(f'<circle cx="{x}" cy="{y}" r="{34 if i==5 else 24}" fill="{RED if i==5 else "#123A73"}" stroke="{YEL}" stroke-width="6"/>' for i, (x, y) in enumerate(pts))
     return f'{_ring()}{e}{n}<text x="220" y="230" text-anchor="middle" font-family="Inter" font-weight="900" font-size="28" fill="{WHITE}">Rp</text>'
 
+def karhutla():
+    # kebakaran hutan & lahan: siluet pepohonan, api, asap (simbolik, tanpa orang)
+    def tree(x, y, h, c):
+        return (f'<path d="M{x} {y-h} L{x+h*.32} {y-h*.45} L{x+h*.16} {y-h*.45} L{x+h*.4} {y} L{x-h*.4} {y} '
+                f'L{x-h*.16} {y-h*.45} L{x-h*.32} {y-h*.45} Z" fill="{c}"/><rect x="{x-6}" y="{y}" width="12" height="22" fill="{c}"/>')
+    back = "".join(tree(x, 330, h, "#123A73") for x, h in [(95,150),(175,190),(265,170),(345,140)])
+    smoke = "".join(f'<circle cx="{x}" cy="{y}" r="{r}" fill="#9AA6B8" opacity="{o}"/>' for x, y, r, o in
+                    [(190,150,46,.35),(240,115,56,.3),(300,80,48,.22),(150,105,34,.22),(345,45,40,.15)])
+    flame = lambda x, y, s, c: (f'<path transform="translate({x} {y}) scale({s})" d="M0 0 C-48 -10 -58 -70 -22 -110 C-26 -78 -6 -66 0 -82 '
+                                f'C6 -120 34 -140 40 -170 C70 -120 76 -50 46 -14 C36 -2 18 2 0 0 Z" fill="{c}"/>')
+    flames = (flame(150,360,1.15,RED) + flame(255,365,1.35,RED) + flame(330,362,1.0,RED)
+              + flame(158,360,.7,"#FF8A1F") + flame(262,364,.85,"#FF8A1F") + flame(336,362,.6,"#FF8A1F")
+              + flame(165,358,.38,YEL) + flame(268,362,.48,YEL) + flame(340,360,.32,YEL))
+    front = tree(70, 360, 120, "#0B2246") + tree(392, 360, 110, "#0B2246")
+    return f'''{_ring()}{smoke}{back}{flames}{front}
+<rect x="40" y="378" width="360" height="16" rx="8" fill="#3B2A1A"/>
+<ellipse cx="220" cy="398" rx="170" ry="14" fill="#000" opacity=".35"/>'''
+
 GRAPHICS = {"kursi-kosong": kursi_kosong, "penyadapan": penyadapan, "gedung": gedung, "uang": uang,
-            "palu": palu, "dokumen": dokumen, "perisai": perisai, "jaringan": jaringan}
+            "palu": palu, "dokumen": dokumen, "perisai": perisai, "jaringan": jaringan, "karhutla": karhutla}
 
 def svg(name, size=440):
     fn = GRAPHICS.get(name)
