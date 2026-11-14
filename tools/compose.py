@@ -11,7 +11,7 @@ Spec (JSON):
   figures    [{slug, name, role}] maks 3 — HANYA tokoh yang namanya disebut di headline; foto dari tokoh/<slug>/
   show_names opsional true → tampilkan label nama/jabatan di foto tokoh (default: tidak; papan nama tokoh TANPA foto tetap tampil)
   graphic    opsional {type, label} — grafis editorial simbolik yang menjelaskan headline
-             (type: kursi-kosong, penyadapan, gedung, uang, palu, dokumen, perisai, jaringan, karhutla, dana-karhutla)
+             (type: kursi-kosong, penyadapan, gedung, uang, palu, dokumen, perisai, jaringan, karhutla, dana-karhutla, bursa-wapres)
   facts      [{icon, label, value}] maks 3 (icon: status police gov money calendar doc chart gavel people mic globe)
   bignum     {value, label}            (budget)
   meter      opsional {pct, label, left, right} (budget) — bar serapan/realisasi di samping bignum; pct HARUS angka bersumber

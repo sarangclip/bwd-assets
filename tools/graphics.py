@@ -135,9 +135,30 @@ def dana_karhutla():
     rp = f'<text x="110" y="318" text-anchor="middle" font-family="Inter" font-weight="900" font-size="22" fill="{NAVY}">Rp</text>'
     return _ring() + smoke + back + mid + flames + front + ground + shadow + notes + coins + rp
 
+def bursa_wapres():
+    # daftar nama yang disebut (teks) + label partai berwarna (BUKAN lambang resmi partai); tanpa orang/wajah
+    names = [("Puan Maharani",0),("Bahlil Lahadalia",0),("Sufmi Dasco Ahmad",1),("Sugiono",1),
+             ("Ahmad Muzani",1),("Muhaimin Iskandar",0),("Zulkifli Hasan",0),("AHY",0)]
+    rows = ""
+    for i,(n,g) in enumerate(names):
+        y = 120 + i*33
+        if g: rows += f'<rect x="52" y="{y-24}" width="336" height="30" rx="6" fill="{RED}" opacity=".22"/>'
+        rows += (f'<circle cx="74" cy="{y-8}" r="12" fill="{RED if g else "#2A4A7F"}"/>'
+                 f'<text x="74" y="{y-2}" text-anchor="middle" font-family="Inter" font-weight="900" font-size="15" fill="{WHITE}">{i+1}</text>'
+                 f'<text x="96" y="{y}" font-family="Inter" font-weight="800" font-size="19" fill="{WHITE}">{n}</text>')
+        if g: rows += (f'<rect x="302" y="{y-20}" width="82" height="24" rx="12" fill="{RED}"/>'
+                       f'<text x="343" y="{y-3}" text-anchor="middle" font-family="Inter" font-weight="900" font-size="12" fill="{WHITE}">GERINDRA</text>')
+    return f'''{_ring()}
+<rect x="40" y="26" width="360" height="352" rx="18" fill="url(#metal)" stroke="{WHITE}" stroke-opacity=".25" stroke-width="3"/>
+<rect x="56" y="42" width="128" height="38" rx="19" fill="{YEL}"/>
+<text x="120" y="68" text-anchor="middle" font-family="Inter" font-weight="900" font-size="20" fill="{NAVY}">GOLKAR</text>
+<text x="196" y="68" font-family="Inter" font-weight="800" font-size="19" fill="{WHITE}">menyebut 8 nama</text>
+<line x1="56" y1="90" x2="384" y2="90" stroke="{WHITE}" stroke-opacity=".25" stroke-width="2"/>
+{rows}'''
+
 GRAPHICS = {"kursi-kosong": kursi_kosong, "penyadapan": penyadapan, "gedung": gedung, "uang": uang,
             "palu": palu, "dokumen": dokumen, "perisai": perisai, "jaringan": jaringan, "karhutla": karhutla,
-            "dana-karhutla": dana_karhutla}
+            "dana-karhutla": dana_karhutla, "bursa-wapres": bursa_wapres}
 
 def svg(name, size=440):
     fn = GRAPHICS.get(name)
