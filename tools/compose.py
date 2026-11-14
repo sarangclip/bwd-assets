@@ -11,9 +11,10 @@ Spec (JSON):
   figures    [{slug, name, role}] maks 3 — HANYA tokoh yang namanya disebut di headline; foto dari tokoh/<slug>/
   show_names opsional true → tampilkan label nama/jabatan di foto tokoh (default: tidak; papan nama tokoh TANPA foto tetap tampil)
   graphic    opsional {type, label} — grafis editorial simbolik yang menjelaskan headline
-             (type: kursi-kosong, penyadapan, gedung, uang, palu, dokumen, perisai, jaringan, karhutla)
+             (type: kursi-kosong, penyadapan, gedung, uang, palu, dokumen, perisai, jaringan, karhutla, dana-karhutla)
   facts      [{icon, label, value}] maks 3 (icon: status police gov money calendar doc chart gavel people mic globe)
   bignum     {value, label}            (budget)
+  meter      opsional {pct, label, left, right} (budget) — bar serapan/realisasi di samping bignum; pct HARUS angka bersumber
   points     ["...", "...", "..."]       (explainer, maks 3)
   bars       [{label, value, display}]  (data, maks 5)
   timeline   [{date, text}]            (data/explainer, maks 4)
@@ -115,6 +116,10 @@ h1 em{{font-style:normal;color:{YEL}}}
 .big{{display:inline-block;background:{YEL};color:{NAVY};border-radius:14px;padding:16px 26px;margin-top:26px}}
 .big b{{display:block;font:900 84px/1 'Inter';letter-spacing:-.03em}}
 .big span{{display:block;margin-top:6px;font:700 22px 'Inter'}}
+.bigrow{{display:flex;align-items:stretch;gap:24px;margin-top:26px}}.bigrow .big{{margin-top:0}}
+.meter{{flex:1;display:flex;flex-direction:column;justify-content:center;background:rgba(255,255,255,.05);border:2px solid rgba(255,255,255,.14);border-radius:14px;padding:16px 22px}}
+.meter .ml{{font:700 21px 'Inter';color:#C9D2E0}}.meter .bar{{position:relative;height:34px;margin:12px 0 8px;background:rgba(255,255,255,.12);border-radius:17px;overflow:hidden}}
+.meter .bar i{{position:absolute;left:0;top:0;bottom:0;background:{YEL};border-radius:17px}}.meter .ends{{display:flex;justify-content:space-between;font:800 21px 'Inter'}}.meter .ends b{{color:{YEL}}}
 .pts{{margin-top:26px;display:grid;gap:14px}}
 .pt{{display:flex;gap:18px;align-items:flex-start;background:rgba(255,255,255,.05);border-radius:12px;padding:16px 20px}}
 .pt i{{flex:none;width:46px;height:46px;border-radius:50%;background:{YEL};color:{NAVY};display:grid;place-items:center;font:900 24px 'Inter';font-style:normal}}
@@ -221,6 +226,11 @@ def build(s, missing):
         fh, plates, nf = figures_html(figs[:1], (560, 140, 520, 640), missing)
         bn = s.get("bignum")
         big = f'<div class="big"><b>{html.escape(bn["value"])}</b><span>{html.escape(bn["label"])}</span></div>' if bn else ""
+        m = s.get("meter")
+        if m and big:
+            big = (f'<div class="bigrow">{big}<div class="meter"><div class="ml">{html.escape(m.get("label",""))}</div>'
+                   f'<div class="bar"><i style="width:{float(m["pct"]):.1f}%"></i></div>'
+                   f'<div class="ends"><b>{html.escape(m.get("left",""))}</b><span>{html.escape(m.get("right",""))}</span></div></div></div>')
         g = s.get("graphic") or {}
         if g.get("type"):
             gx, gy, gs = (30, 150, 470) if fh else (300, 130, 480)

@@ -113,8 +113,31 @@ def karhutla():
 <rect x="40" y="378" width="360" height="16" rx="8" fill="#3B2A1A"/>
 <ellipse cx="220" cy="398" rx="170" ry="14" fill="#000" opacity=".35"/>'''
 
+def dana_karhutla():
+    # anggaran karhutla: hutan terbakar (latar) + tumpukan uang Rp (depan); simbolik, tanpa orang
+    def tree(x, y, h, c):
+        return (f'<path d="M{x} {y-h} L{x+h*.32} {y-h*.45} L{x+h*.16} {y-h*.45} L{x+h*.4} {y} L{x-h*.4} {y} '
+                f'L{x-h*.16} {y-h*.45} L{x-h*.32} {y-h*.45} Z" fill="{c}"/><rect x="{x-5}" y="{y}" width="10" height="18" fill="{c}"/>')
+    smoke = "".join(f'<circle cx="{x}" cy="{y}" r="{r}" fill="#9AA6B8" opacity="{o}"/>' for x, y, r, o in
+                    [(150,120,40,.32),(205,88,50,.28),(265,60,42,.2),(115,80,30,.2),(310,32,34,.14)])
+    back = "".join(tree(x, 280, h, "#1A4A8A") for x, h in [(40,120),(95,150),(150,130),(210,165),(270,140),(330,155),(395,125)])
+    mid = "".join(tree(x, 300, h, "#123A73") for x, h in [(65,110),(125,135),(185,120),(245,130),(305,115),(370,120)])
+    flame = lambda x, y, s, c: (f'<path transform="translate({x} {y}) scale({s})" d="M0 0 C-48 -10 -58 -70 -22 -110 C-26 -78 -6 -66 0 -82 '
+                                f'C6 -120 34 -140 40 -170 C70 -120 76 -50 46 -14 C36 -2 18 2 0 0 Z" fill="{c}"/>')
+    flames = "".join(flame(x, 302, sc, RED) + flame(x+6, 302, sc*.62, "#FF8A1F") + flame(x+10, 300, sc*.33, YEL)
+                     for x, sc in [(80,.95),(165,1.25),(255,1.1),(335,.9)])
+    front = tree(30, 318, 105, "#0B2246") + tree(410, 318, 95, "#0B2246")
+    ground = '<rect x="10" y="316" width="420" height="14" rx="7" fill="#3B2A1A"/>'
+    notes = "".join(f'<g transform="translate({214+i*6} {282-i*22}) rotate({-6+i*4} 90 40)"><rect width="180" height="84" rx="8" fill="#1F7A4D" stroke="{WHITE}" stroke-opacity=".8" stroke-width="4"/>'
+                    f'<circle cx="90" cy="42" r="22" fill="none" stroke="{WHITE}" stroke-opacity=".65" stroke-width="3.5"/><text x="90" y="51" text-anchor="middle" font-family="Inter" font-weight="900" font-size="22" fill="{WHITE}" opacity=".9">Rp</text></g>' for i in range(3))
+    coins = "".join(f'<ellipse cx="110" cy="{372-i*15}" rx="52" ry="16" fill="{YEL}" stroke="#B8860B" stroke-width="4"/>' for i in range(5))
+    shadow = '<ellipse cx="250" cy="386" rx="190" ry="16" fill="#000" opacity=".4"/>'
+    rp = f'<text x="110" y="318" text-anchor="middle" font-family="Inter" font-weight="900" font-size="22" fill="{NAVY}">Rp</text>'
+    return _ring() + smoke + back + mid + flames + front + ground + shadow + notes + coins + rp
+
 GRAPHICS = {"kursi-kosong": kursi_kosong, "penyadapan": penyadapan, "gedung": gedung, "uang": uang,
-            "palu": palu, "dokumen": dokumen, "perisai": perisai, "jaringan": jaringan, "karhutla": karhutla}
+            "palu": palu, "dokumen": dokumen, "perisai": perisai, "jaringan": jaringan, "karhutla": karhutla,
+            "dana-karhutla": dana_karhutla}
 
 def svg(name, size=440):
     fn = GRAPHICS.get(name)
