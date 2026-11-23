@@ -28,6 +28,11 @@
     "role": "Tokoh NasDem; DPR",
     "aliases": []
   },
+  "ahrie-sonta-nasution": {
+    "name": "Ahrie Sonta Nasution",
+    "role": "Perwira tinggi Polri (Irjen), tersangka dugaan",
+    "aliases": []
+  },
   "airlangga-hartarto": {
     "name": "Airlangga Hartarto",
     "role": "Menko Perekonomian",
@@ -155,6 +160,11 @@
   "edhie-baskoro": {
     "name": "Edhie Baskoro Yudhoyono",
     "role": "Politikus Demokrat; MPR",
+    "aliases": []
+  },
+  "eko-hadi-santoso": {
+    "name": "Eko Hadi Santoso",
+    "role": "Perwira tinggi Polri (Irjen), tersangka dugaan",
     "aliases": []
   },
   "erick-thohir": {
@@ -425,6 +435,11 @@
   "sjafrie": {
     "name": "Sjafrie Sjamsoeddin",
     "role": "Menteri Pertahanan",
+    "aliases": []
+  },
+  "slamet-uliandi": {
+    "name": "Slamet Uliandi",
+    "role": "Perwira tinggi Polri (Irjen), tersangka dugaan",
     "aliases": []
   },
   "suahasil": {
